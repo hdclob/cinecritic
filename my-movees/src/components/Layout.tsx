@@ -4,7 +4,7 @@ const Layout = () => {
   return (
     // The min-h-screen ensures the background covers the whole page
     // bg-slate-950 is a very dark "midnight" blue/black
-    <div className="min-h-screen bg-slate-950 text-slate-50 font-sans">
+    <div className="flex flex-col min-h-screen bg-slate-950 text-slate-50 font-sans">
       {/* --- NAVIGATION BAR --- */}
       <nav className="sticky top-0 z-50 border-b border-slate-800 bg-slate-900/80 backdrop-blur-md">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -60,13 +60,13 @@ const Layout = () => {
       </nav>
 
       {/* --- MAIN CONTENT AREA --- */}
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <main className="flex-1 max-w-7xl px-4 sm:px-6 lg:px-8 py-8">
         {/* This is where your Home, About, etc. pages will render */}
         <Outlet />
       </main>
 
       {/* --- FOOTER --- */}
-      <footer className="border-t border-slate-800 mt-auto py-10 bg-slate-900">
+      <footer className="border-t border-slate-800 py-10 bg-slate-900">
         <div className="max-w-7xl mx-auto px-4 text-center">
           <p className="text-slate-500 text-sm">
             © {new Date().getFullYear()} CineCritic. All reviews are
