@@ -51,16 +51,16 @@ const Layout = () => {
 
             {/* Login Button */}
             <div>
-              <button className="bg-red-600 hover:bg-red-700 text-white text-sm font-bold py-2 px-5 rounded-md transition cursor-pointer">
+              <Link to="/login" className="bg-red-600 hover:bg-red-700 text-white text-sm font-bold py-2 px-5 rounded-md transition cursor-pointer">
                 Sign In
-              </button>
+              </Link>
             </div>
           </div>
         </div>
       </nav>
 
       {/* --- MAIN CONTENT AREA --- */}
-      <main className="flex-1 max-w-7xl px-4 sm:px-6 lg:px-8 py-8">
+      <main className="flex-1 w-full px-4 sm:px-6 lg:px-8 py-8">
         {/* This is where your Home, About, etc. pages will render */}
         <Outlet />
       </main>
