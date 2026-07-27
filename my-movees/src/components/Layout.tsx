@@ -1,6 +1,21 @@
-import { Link, Outlet } from "react-router";
+import { Link, Outlet, useLocation } from "react-router";
+import CookieManager from "../utils/CookieManager";
+import { useEffect, useState } from "react";
 
 const Layout = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
+  const location = useLocation();
+
+  useEffect(() => {
+    const status = CookieManager.get('logged_in');
+    setIsLoggedIn(!!status);
+  }, [location]);
+
+  const handleLogout = () => {
+    CookieManager.remove('logged_in');
+    setIsLoggedIn(false);
+  };
+
   return (
     // The min-h-screen ensures the background covers the whole page
     // bg-slate-950 is a very dark "midnight" blue/black
@@ -50,10 +65,33 @@ const Layout = () => {
             </div>
 
             {/* Login Button */}
-            <div>
+            {/* <div>
               <Link to="/login" className="bg-red-600 hover:bg-red-700 text-white text-sm font-bold py-2 px-5 rounded-md transition cursor-pointer">
                 Sign In
               </Link>
+            </div> */}
+            {/* Login / Logout Section */}
+            <div>
+              {isLoggedIn ? (
+                /* If logged in, show Logout or Profile */
+                <div className="flex items-center gap-4">
+                  <span className="text-sm text-slate-400 italic">Welcome back!</span>
+                  <button 
+                    onClick={handleLogout}
+                    className="text-slate-50 text-sm font-bold py-2 px-5 rounded-md border border-slate-700 hover:bg-slate-800 transition cursor-pointer"
+                  >
+                    Sign Out
+                  </button>
+                </div>
+              ) : (
+                /* If NOT logged in, show Sign In link */
+                <Link 
+                  to="/login" 
+                  className="bg-red-600 hover:bg-red-700 text-white text-sm font-bold py-2 px-5 rounded-md transition cursor-pointer"
+                >
+                  Sign In
+                </Link>
+              )}
             </div>
           </div>
         </div>

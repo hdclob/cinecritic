@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router";
 import { useActionState } from "react";
+import CookieManager from "../utils/CookieManager";
 
 const Login = () => {
   interface FormState {
@@ -14,7 +15,7 @@ const Login = () => {
     const password = formData.get("password");
 
     if (email == "admin" && password == "tst") {
-      document.cookie = "logged_in=true; path=/";
+      CookieManager.set('logged_in', 'true');
 
       navigate("/");
       return { error: null };
@@ -39,13 +40,13 @@ const Login = () => {
             name="email"
             placeholder="Email"
             defaultValue={state.enteredEmail}
-            className="w-full bg-slate-800 border-none text-sm rounded-full py-2 px-4 focus:ring-2 focus:ring-red-600 outline-none transition"
+            className="w-full bg-slate-800 border-none text-sm rounded-md py-2 px-4 focus:ring-2 focus:ring-red-600 outline-none transition"
           />
           <input
             type="password"
             name="password"
             placeholder="Password"
-            className="w-full bg-slate-800 border-none text-sm rounded-full py-2 px-4 focus:ring-2 focus:ring-red-600 outline-none transition"
+            className="w-full bg-slate-800 border-none text-sm rounded-md py-2 px-4 focus:ring-2 focus:ring-red-600 outline-none transition"
           />
           {state?.error && (
             <p className="text-red-500 text-xs mt-1 italic">{state.error}</p>
