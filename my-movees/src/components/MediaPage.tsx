@@ -46,8 +46,8 @@ const MediaPage = ({ title, subtitle, items, isLoading }: MediaPageProps) => {
               {/* Movie Info */}
               <div className="p-4">
                 <div className="flex items-center justify-between gap-2">
-                  <h3 className="line-clamp-1 font-semibold">{displayTitle}</h3>
-                  <span className="flex items-center rounded bg-slate-800 px-2 py-1 text-xs font-bold text-yellow-500">
+                  <h3 className="line-clamp-1 font-semibold min-w-0">{displayTitle}</h3>
+                  <span className="flex shrink-0 items-center whitespace-nowrap rounded bg-slate-800 px-2 py-1 text-xs font-bold text-yellow-500">
                     ★ {item.vote_average.toFixed(1)}
                   </span>
                 </div>
