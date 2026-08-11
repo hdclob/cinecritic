@@ -7,6 +7,7 @@ import Movies from "./pages/Movies";
 import Shows from "./pages/Shows";
 
 import "./App.css";
+import Search from "./pages/Search";
 
 const router = createBrowserRouter([
   {
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
       {
         path: "/about",
         element: <About />,
+      },
+      {
+        path: "/search",
+        element: <Search />,
       },
       {
         path: "/login",

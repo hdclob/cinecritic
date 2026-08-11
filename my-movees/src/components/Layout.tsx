@@ -1,6 +1,7 @@
 import { Link, Outlet, useLocation } from "react-router";
 import CookieManager from "../utils/CookieManager";
 import { useEffect, useState } from "react";
+import SearchBar from "./SearchBar";
 
 const Layout = () => {
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
@@ -57,15 +58,7 @@ const Layout = () => {
             </div>
 
             {/* Simple Search Bar (Placeholder) */}
-            <div className="hidden sm:block flex-1 max-w-xs mx-4">
-              <div className="relative">
-                <input
-                  type="text"
-                  placeholder="Search movies..."
-                  className="w-full bg-slate-800 border-none text-sm rounded-full py-2 px-4 focus:ring-2 focus:ring-red-600 outline-none transition"
-                />
-              </div>
-            </div>
+            <SearchBar />
 
             {/* Login / Logout Section */}
             <div>

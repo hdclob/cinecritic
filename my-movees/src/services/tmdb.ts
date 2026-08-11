@@ -19,3 +19,21 @@ export const fetchPopular = async <T>(
   const data: TMDBResponse<T> = await response.json();
   return data.results;
 };
+
+/**
+ * New Search Function
+ * TMDB "multi" search hits movies, tv shows, and people in one request.
+ */
+export const searchMulti = async <T>(query: string): Promise<T[]> => {
+  // Use encodeURIComponent to handle spaces and special characters in the search string
+  const response = await fetch(
+    `${BASE_URL}/search/multi?api_key=${API_KEY}&query=${encodeURIComponent(query)}`,
+  );
+
+  if (!response.ok) {
+    throw new Error(`Failed to search for: ${query}`);
+  }
+
+  const data: TMDBResponse<T> = await response.json();
+  return data.results;
+};
